@@ -1,8 +1,14 @@
 version: '3.5'
 
 services:  
+    api-service:  
+      container_name: api 
+      image: quarkus-process-api:latest
+      ports: 
+        - '8080:8080'  
+   
     angular-service:  
-      container_name: web  
+      container_name: front  
       build: ./frontend 
       volumes:  
         - './frontend:/usr/src/app' 
