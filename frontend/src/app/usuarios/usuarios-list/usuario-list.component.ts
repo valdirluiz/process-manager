@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { UsuarioService } from "../../service/usuario.service"; // CRUD services API
- import { ToastrService } from "ngx-toastr";
+import { ToastrService } from "ngx-toastr";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+
 
 @Component({
   selector: "app-hospede-list",
@@ -9,14 +11,15 @@ import { UsuarioService } from "../../service/usuario.service"; // CRUD services
 export class UsuarioListComponent implements OnInit {
   p: number = 1;
   usuarios: any[];
-  hideWhenNoUsuario: boolean = false;
-  noData: boolean = false;
+  hideWhenNoUsuario: boolean = true;
+  noData: boolean = true;
   preLoader: boolean = true;
 
-  constructor(public crudApi: UsuarioService, public toastr: ToastrService) {}
+  constructor( public toastr: ToastrService, private http: HttpClient) {}
 
   ngOnInit() {
     console.log("usuarios")
+    
   }
 
   
