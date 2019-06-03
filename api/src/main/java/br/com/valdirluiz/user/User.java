@@ -3,9 +3,11 @@ package br.com.valdirluiz.user;
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
+@Table(name="users")
 @Entity
 @Cacheable
 public class User extends PanacheEntity {
