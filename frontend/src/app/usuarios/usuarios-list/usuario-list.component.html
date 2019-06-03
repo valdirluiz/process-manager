@@ -1,0 +1,39 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  
+  <a routerLink="/registrar-hospede" class="btn btn-success" *ngIf="">
+     Cadastrar Hóspede
+  </a>
+</div>
+
+<div class="pricing-header mx-auto">
+
+  
+   <div class="no-data text-center" *ngIf="noData">
+     <p class="nodata-msg">Nenhum usuário cadastrado</p>
+  </div>
+
+  <div class="table-responsive" *ngIf="hideWhenNoUsuario">
+    <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+      <thead>
+        <tr>
+          <th scope="col">#Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">País de origem</th>
+           <th class="text-center" scope="col">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr *ngFor="let hospede of hospedes | paginate: { itemsPerPage: 3, currentPage: p }; let i = index;">
+          <th scope="row">{{hospede.$key}}</th>
+          <td>{{hospede.nome}}</td>
+          <td>{{hospede.paisOrigem}}</td>
+          <td class="text-center action-block">
+            <i class="fas fa-trash-alt" (click)="deleteHospede(hospede)"></i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Pagination -->
+  <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+</div>

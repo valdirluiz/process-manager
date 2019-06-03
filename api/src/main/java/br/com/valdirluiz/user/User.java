@@ -7,17 +7,19 @@ import javax.persistence.Table;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-@Table(name="users")
+@Table(name = "users")
 @Entity
 @Cacheable
 public class User extends PanacheEntity {
 
 	@Column
-	public String email;
+	private String email;
 	@Column
-	public String name;
+	private String name;
 	@Column
-	public String password;
+	private String password;
+	@Column
+	private String celular;
 
 	public String getEmail() {
 		return email;
@@ -41,6 +43,14 @@ public class User extends PanacheEntity {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
 	}
 
 }
